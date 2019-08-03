@@ -12,3 +12,15 @@ def BankIFSCDetailsView(request,ifsc):
     serializer = BankSerializer(bank)
     print(serializer)
     return Response(serializer.data)
+
+@api_view(["GET"])
+def BranchDetailView(request,branch,city):
+    print(branch)
+    print(city)
+    branchlist = Bank.objects.filter(branch__icontains=branch, city__icontains=city)
+    print(branchlist)
+
+    for branchd in branchlist:
+        serializerd = BankSerializer(branchd)
+        print(serializerd)
+        return Response(serializerd.data)
