@@ -9,4 +9,4 @@ class Bank(models.Model):
     city = models.CharField(max_length=500)
     district = models.CharField(max_length=500)
     state = models.CharField(max_length=500)
-    bank_name = models.CharField(max_length=500)
+    bank_name = models.CharField(max_length=500) 
