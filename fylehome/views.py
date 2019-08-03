@@ -19,7 +19,6 @@ def BranchDetailView(request,branch,city):
     print(city)
     branchlist = Bank.objects.filter(branch__icontains=branch, city__icontains=city)
     print(branchlist)
-
     for branchd in branchlist:
         serializerd = BankSerializer(branchd)
         print(serializerd)
