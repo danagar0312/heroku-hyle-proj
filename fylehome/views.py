@@ -7,6 +7,10 @@ from rest_framework import generics
 from rest_framework.pagination import LimitOffsetPagination
 from django.db.models import Q
 import operator
+from rest_framework_jwt.views import ObtainJSONWebToken, RefreshJSONWebToken
+from rest_framework.permissions import IsAuthenticated
+
+
 
 @api_view(["GET"])
 def BankIFSCDetailsView(request,ifsc):
@@ -37,6 +41,7 @@ class MultipleFieldLookupMixin(object):
         return get_object_or_404(queryset, q)
 
 class ClassBranchDetailView(MultipleFieldLookupMixin,generics.ListAPIView):
+    permission_classes = (IsAuthenticated,)
     queryset = Bank.objects.all()
     serializer_class = BankSerializer
     pagination_class = LimitOffsetPagination
