@@ -26,11 +26,6 @@ def BranchDetailView(request,branch,city,offset,limit):
     serializerd = BankSerializer(branchlist, many=True)
     return Response(serializerd.data)
 
-class SetLimitOffsetPagination(LimitOffsetPagination):
-    default_limit = 2
-    limit_query_param = 1
-    offset_query_param = 2
-
 class MultipleFieldLookupMixin(object):
     def get_object(self):
         queryset = self.get_queryset()             # Get the base queryset
